@@ -54,5 +54,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(index);
-	return (length);
+	return (length - 1);
 }
