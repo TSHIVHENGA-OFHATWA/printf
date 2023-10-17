@@ -12,7 +12,7 @@ int form_char(va_list index)
 
 	putchar(character);
 	length++;
-	return (length);
+	return (1);
 }
 /**
  * form_str - print string characater.
