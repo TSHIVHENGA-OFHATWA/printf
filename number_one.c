@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - produces output according to a format.
  * @format: to be printed
@@ -33,9 +32,10 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				str = va_arg(index, char*);
-				for (; *str != '\0'; str++)
+				while (*str != '\0')
 				{
 					putchar(*str);
+					str++;
 					length++;
 				}
 			}
