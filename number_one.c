@@ -60,7 +60,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 's')
 			{
-				length1 += form_str(index);
+				length += form_str(index);
 			}
 			else if (*format == '%')
 			{
