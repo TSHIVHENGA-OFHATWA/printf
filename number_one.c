@@ -7,7 +7,7 @@
  */
 int form_char(va_list index)
 {
-	int length = 0;
+	int length = 1;
 	char character = va_arg(index, int);
 
 	putchar(character);
@@ -22,7 +22,13 @@ int form_char(va_list index)
 int form_str(va_list index)
 {
 	int length1;
-	char *str;
+	char *str = NULL;
+
+	if (str == NULL)
+	{
+		puts("error here");
+		return (-1);
+	}
 
 	str = va_arg(index, char*);
 	while (*str != '\0')
