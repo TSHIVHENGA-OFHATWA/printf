@@ -7,27 +7,32 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list prints;
+	va_list index;
 	char *str;
 	int length = 0;
 
-	va_start(prints, format);
+	va_start(index, format);
+
+	if (format == NULL)
+		return (-1);
 
 	for (; *format != '\0'; format++)
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
+			if (*format == '\0')
+				break;
+			else if (*format == 'c')
 			{
-				char character = va_arg(prints, int);
+				char character = va_arg(index, int);
 
 				putchar(character);
 				length++;
 			}
 			else if (*format == 's')
 			{
-				str = va_arg(prints, char*);
+				str = va_arg(index, char*);
 				for (; *str != '\0'; str++)
 				{
 					putchar(*str);
@@ -46,6 +51,6 @@ int _printf(const char *format, ...)
 			length++;
 		}
 	}
-	va_end(prints);
+	va_end(index);
 	return (length);
 }
