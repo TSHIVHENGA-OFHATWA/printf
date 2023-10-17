@@ -7,12 +7,10 @@
  */
 int form_char(va_list index)
 {
-	int length = 1;
 	char character = va_arg(index, int);
 
 	putchar(character);
-	length++;
-	return (length);
+	return (1);
 }
 /**
  * form_str - print string characater.
@@ -22,9 +20,9 @@ int form_char(va_list index)
 int form_str(va_list index)
 {
 	int length1 = 0;
-	char *str;
+	const char *str;
 
-	str = va_arg(index, char*);
+	str = va_arg(index, const char*);
 
 	while (*str != '\0')
 	{
@@ -58,12 +56,11 @@ int _printf(const char *format, ...)
 				break;
 			else if (*format == 'c')
 			{
-				length = form_char(index);
+				length += form_char(index);
 			}
 			else if (*format == 's')
 			{
-				length1 = form_str(index);
-				length += length1;
+				length1 += form_str(index);
 			}
 			else if (*format == '%')
 			{
@@ -74,7 +71,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			putchar(*format);
-			length += 2;
+			length++;
 		}
 	}
 	va_end(index);
