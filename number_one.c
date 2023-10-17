@@ -1,4 +1,39 @@
 #include "main.h"
+
+/**
+ * form_char - print char characater.
+ * @index: list of argments
+ * Return: the number of characters from string.
+ */
+int form_char(va_list index)
+{
+	int length = 0;
+	char character = va_arg(index, int);
+
+	putchar(character);
+	length++;
+	return (length);
+}
+/**
+ * form_str - print string characater.
+ * @index: list of argments
+ * Return: the number of characters from string.
+ */
+int form_str(va_list index)
+{
+	int length1;
+	char *str;
+
+	str = va_arg(index, char*);
+	while (*str != '\0')
+	{
+		putchar(*str);
+		str++;
+		length1++;
+	}
+	return (length1);
+}
+
 /**
  * _printf - produces output according to a format.
  * @format: to be printed
@@ -7,14 +42,12 @@
 int _printf(const char *format, ...)
 {
 	va_list index;
-	char *str;
-	int length = 0;
+	int length1, length = 0;
 
 	va_start(index, format);
 
 	if (format == NULL)
 		return (-1);
-
 	for (; *format != '\0'; format++)
 	{
 		if (*format == '%')
@@ -24,20 +57,12 @@ int _printf(const char *format, ...)
 				break;
 			else if (*format == 'c')
 			{
-				char character = va_arg(index, int);
-
-				putchar(character);
-				length++;
+				length += form_char(index);
 			}
 			else if (*format == 's')
 			{
-				str = va_arg(index, char*);
-				while (*str != '\0')
-				{
-					putchar(*str);
-					str++;
-					length++;
-				}
+				length1 = form_str(index);
+				length += length1;
 			}
 			else if (*format == '%')
 			{
