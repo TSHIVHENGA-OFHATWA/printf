@@ -2,7 +2,7 @@
 
 /**
  * mall_str - produces output according to a format.
- * @format: to be printed
+ * @index: list of arguments
  * Return: the number of characters printed.
  */
 int mall_str(va_list index)
@@ -19,7 +19,7 @@ int mall_str(va_list index)
 	if (cpy == NULL)
 		return (-1);
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		cpy[i] = ptr[i];
 		i++;
@@ -44,7 +44,6 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(index, format);
-
 	while (*format)
 	{
 		if (*format != '%')
