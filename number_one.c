@@ -67,7 +67,13 @@ int _printf(const char *format, ...)
 				putchar('%');
 				length++;
 			}
-		}
+			else 
+			{
+				putchar('%');
+				putchar(*format);
+				length += 2;
+			}
+		}	
 		else
 		{
 			putchar(*format);
@@ -75,5 +81,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(index);
-	return (length - 1);
+	return (length);
 }
