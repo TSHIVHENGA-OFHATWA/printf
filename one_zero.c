@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * mall_str - produces output according to a format.
  * @index: list of arguments
@@ -71,6 +70,12 @@ int _printf(const char *format, ...)
 
 				write(1, &letter, 1);
 				length++;
+			}
+			else
+			{
+				write(1, "%", 1);
+				write(1, format, 1);
+					length++;
 			}
 		}
 		format++;
