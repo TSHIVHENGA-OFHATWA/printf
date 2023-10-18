@@ -29,10 +29,25 @@ int mall_str(va_list index)
 	return (len);
 }
 /**
+ * form_char - produces output according to a format.
+ * @index: to be printed
+ * Return: the number of characters printed.
+ */
+int form_char(va_list index)
+{
+	int length = 0;
+	char letter = va_arg(index, int);
+
+	write(1, &letter, 1);
+	length++;
+	return (length);
+}
+/**
  * _printf - produces output according to a format.
  * @format: to be printed
  * Return: the number of characters printed.
  */
+
 
 int _printf(const char *format, ...)
 {
@@ -61,16 +76,9 @@ int _printf(const char *format, ...)
 				length++;
 			}
 			else if (*format == 's')
-			{
 				length += mall_str(index);
-			}
 			else if (*format == 'c')
-			{
-				char letter = va_arg(index, int);
-
-				write(1, &letter, 1);
-				length++;
-			}
+				length += form_char(index);
 			else
 			{
 				write(1, "%", 1);
