@@ -75,7 +75,7 @@ int _printf(const char *format, ...)
 			{
 				write(1, "%", 1);
 				write(1, format, 1);
-					length++;
+					length += 2;
 			}
 		}
 		format++;
